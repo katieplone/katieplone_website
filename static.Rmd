@@ -1,0 +1,66 @@
+---
+title: "Shiny Data Visualizations"
+description: |
+  This page shows my data visuaizations using Shiny. The first graph demonstrates how confidence intervals can be repeatedly calculated to produce different intervals, some of which contain the population statistic, and some of which do not. The purpose of these visualizations is to help intro statistics students gain a better understanding of confidence intervals and what they mean. 
+---
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r, echo=FALSE}
+library(ggplot2)
+```
+
+**Static Shiny Creation:**
+
+```{r, echo=FALSE}
+
+library(ggplot2)
+
+  sampleMean = NULL
+  sampleSD = NULL
+  lowerbound = NULL
+  upperbound = NULL
+  confidence.interval=NULL
+  confidencelevel = .9
+  sampsize = 50
+  
+  trial= c(1:50)
+  for(i in 1:50){
+    samp = rnorm(sampsize, 10, 3)
+    sampleMean[i] = mean(samp)
+    sampleSD[i]= sd(samp)
+    lowerbound[i] = sampleMean[i] - qnorm(1-(1-confidencelevel)/2)*(sampleSD[i]/sqrt(sampsize))
+    upperbound[i] = sampleMean[i] + qnorm(1-(1-confidencelevel)/2)*(sampleSD[i]/sqrt(sampsize))
+    confidence.interval[i] = upperbound[i] - lowerbound[i]
+  }
+    
+  e = data.frame(trial, sampleMean, sampleSD, lowerbound, upperbound, confidence.interval)
+    
+    
+  ggplot(e, aes(x = sampleMean, y = trial, group = confidence.interval)) +
+    geom_errorbar(aes(xmin= lowerbound, xmax= upperbound, color = ifelse(upperbound < 10 | lowerbound > 10,
+                                                                         "Does Not Include", "Includes")), width=.2, position=position_dodge(.9))+
+    geom_dotplot(binaxis='y', stackdir='center', fill = ("white")) +
+    ylab("Trial Number") +
+    xlab("Sample Mean and resulting CI") +
+    geom_vline(xintercept = 10, color = "red") +
+    theme(axis.text.x = element_text(angle = 45))+
+    scale_x_continuous(limits = c(8, 12))+
+    theme(plot.title = element_text(size=8))+
+    theme(axis.title.x  = element_text(size=7))+
+    theme(axis.title.y  = element_text(size=7))+
+    theme(plot.caption = element_text(size=5))+
+    labs(caption = "Figure 6")+
+    theme(legend.position = "bottom") +
+    labs(color = "True Mean Value") +
+    theme(plot.caption = element_text(size=5))+
+    theme(plot.caption = element_text(hjust = 0.5)) +
+    ggtitle("90% Confidence Intervals for Sample Size 50")
+
+```
+
+**Link to my interactive Shiny creation: **
+
+https://rconnect.bucknell.edu/content/2c3f0336-668a-46c0-ab93-036e915446c4
+

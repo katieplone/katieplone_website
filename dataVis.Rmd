@@ -1,0 +1,306 @@
+---
+title: "Data Visualizations"
+description: "This page includes an array of visualizations created to show the characteristics of dogs that are present in dogs listed for adoption. Included are several different data visualizations including pie charts, bar charts, and mosaic plots. The goal of these graphs are to help better understand the relationship between different dog characteristics that are considered when adopting."
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r, echo=FALSE}
+library(ggplot2)
+attach(Data)
+```
+
+*Pie Charts to show the distributions of the Categorical Variables:*
+
+I wanted to begin the visualizations with a series of pie charts to show the distributions of the categorical variables since many of them are "yes" and "no" answers. These allow us to get an understanding of the characteristics of the dogs in the dataset.  
+
+```{r, echo=FALSE}
+count1 = sum(neutered=="no")
+count2 = sum(neutered=="yes")
+
+CountNeu = c(count1, count2)
+Neutered = c("No", "Yes")
+
+dfNeu <- data.frame(CountNeu, Neutered)
+
+one <- ggplot(dfNeu, aes(x="", y=CountNeu, fill=Neutered)) +
+  geom_col(color="black") +
+  geom_text(aes(label=CountNeu), 
+            position=position_stack(vjust=0.5))+
+  coord_polar(theta="y") +
+  scale_fill_manual("", values= c("salmon", "peachpuff" ))  +
+  labs(x=" ", y="Count", title="Neutered (y/n)")
+```
+
+```{r, echo=FALSE}
+countf = sum(sex=="female")
+countm = sum(sex=="male")
+
+Count = c(countf, countm)
+Sex = c("female", "male")
+
+dfsex <- data.frame(Count, Sex)
+
+two <- ggplot(dfsex, aes(x="", y=Count, fill=Sex)) +
+  geom_col(color="black") +
+  geom_text(aes(label=Count), 
+            position=position_stack(vjust=0.5))+
+  coord_polar(theta="y") +
+  scale_fill_manual("", values= c("salmon", "peachpuff" )) +
+  labs(x=" ", y="Count", title="Likes Children")
+```
+
+```{r, echo=FALSE}
+count3 = sum(housebroken=="no")
+count4 = sum(housebroken=="yes")
+
+CountHouse = c(count3, count4)
+Housebroken = c("No", "Yes")
+
+dfHouse <- data.frame(CountHouse, Housebroken)
+
+three <- ggplot(dfHouse, aes(x="", y=CountHouse, fill=Housebroken)) +
+  geom_col(color="black") +
+  geom_text(aes(label=CountHouse), 
+            position=position_stack(vjust=0.5))+
+  coord_polar(theta="y") +
+  scale_fill_manual("", values= c("salmon", "peachpuff" ))  +
+  labs(x=" ", y="Count", title="Housebroken (y/n)")
+
+```
+
+```{r, echo=FALSE}
+count5 = sum(get_along_cats=="no")
+count6 = sum(get_along_cats=="yes")
+
+CountCats = c(count5, count6)
+Cats = c("No", "Yes")
+
+dfCats <- data.frame(CountCats, Cats)
+
+four <- ggplot(dfCats, aes(x="", y=CountCats, fill=Cats)) +
+  geom_col(color="black") +
+  geom_text(aes(label=CountCats), 
+            position=position_stack(vjust=0.5))+
+  coord_polar(theta="y") +
+  scale_fill_manual("", values= c("salmon", "peachpuff" )) +
+  labs(x=" ", y="Count", title="Get along w/ Cats")
+```
+
+```{r, echo=FALSE}
+count7 = sum(get_along_females=="no")
+count8 = sum(get_along_females=="yes")
+
+CountFem = c(count7, count8)
+Fem = c("No", "Yes")
+
+dfFem <- data.frame(CountFem, Fem)
+
+five <- ggplot(dfCats, aes(x="", y=CountFem, fill=Fem)) +
+  geom_col(color="black") +
+  geom_text(aes(label=CountFem), 
+            position=position_stack(vjust=0.5))+
+  coord_polar(theta="y") +
+  scale_fill_manual("", values= c("salmon", "peachpuff" )) +
+  labs(x=" ", y="Count", title="Get Along w/ Females")
+```
+
+```{r, echo=FALSE}
+count9 = sum(get_along_males=="no")
+count10 = sum(get_along_males=="yes")
+
+CountMale = c(count9, count10)
+Male = c("No", "Yes")
+
+dfFem <- data.frame(CountMale, Male)
+
+six <- ggplot(dfCats, aes(x="", y=CountMale, fill=Male)) +
+  geom_col(color="black") +
+  geom_text(aes(label=CountMale), 
+            position=position_stack(vjust=0.5))+
+  coord_polar(theta="y") +
+  scale_fill_manual("", values= c("salmon", "peachpuff" )) +
+  labs(x=" ", y="Count", title="Get Along w/ Males")
+```
+
+```{r, echo=FALSE}
+count11 = sum(likes_children=="no")
+count12 = sum(likes_children=="yes")
+
+Countchild = c(count11, count12)
+child = c("No", "Yes")
+
+dfchild <- data.frame(Countchild, child)
+
+seven <- ggplot(dfchild, aes(x="", y=Countchild, fill=child)) +
+  geom_col(color="black") +
+  geom_text(aes(label=Countchild), 
+            position=position_stack(vjust=0.5))+
+  coord_polar(theta="y") +
+  scale_fill_manual("", values= c("salmon", "peachpuff" )) +
+  labs(x=" ", y="Count", title="Likes Children")
+```
+
+```{r, echo=FALSE}
+count13 = sum(likes_people=="no")
+count14 = sum(likes_people=="yes")
+
+countppl = c(count13, count14)
+ppl = c("No", "Yes")
+
+dfppl <- data.frame(countppl, ppl)
+
+eight <- ggplot(dfppl, aes(x="", y=countppl, fill=ppl)) +
+  geom_col(color="black") +
+  geom_text(aes(label=countppl), 
+            position=position_stack(vjust=0.5))+
+  coord_polar(theta="y") +
+  scale_fill_manual("", values= c("salmon", "peachpuff" )) +
+  labs(x=" ", y="Count", title="Likes People")
+```
+
+
+```{r, echo=FALSE}
+count15 = sum(Data$size=="small")
+count16 = sum(Data$size=="medium")
+count17 = sum(Data$size=="large")
+
+countsize = c(count15, count16, count17)
+size2 = c("small", "medium", "large")
+
+dfsize <- data.frame(countsize, size2)
+
+nine <- ggplot(dfsize, aes(x="", y=countsize, fill=size2)) +
+  geom_col(color="black") +
+  geom_text(aes(label=countsize), 
+            position=position_stack(vjust=0.5))+
+  coord_polar(theta="y") +
+  scale_fill_manual("", values= c("salmon", "peachpuff", "white")) +
+  labs(x=" ", y="Count", title="Size")
+```
+
+```{r, echo=FALSE}
+count18 = sum(Data$coat=="short")
+count19 = sum(Data$coat=="medium")
+count20 = sum(Data$coat=="long")
+count21 = sum(Data$coat == "wirehaired")
+
+countcoat = c(count18, count19, count20, count21)
+coat2 = c("short", "medium", "long", "wirehaired")
+
+dfcoat <- data.frame(countcoat, coat2)
+
+ten <- ggplot(dfcoat, aes(x="", y=countcoat, fill=coat2)) +
+  geom_col(color="black") +
+  geom_text(aes(label=countcoat), 
+            position=position_stack(vjust=0.5))+
+  coord_polar(theta="y") +
+  scale_fill_manual("", values= c("salmon", "peachpuff", "darksalmon", "white")) +
+  labs(x=" ", y="Count", title="Coat Length") 
+  
+```
+
+```{r, echo=FALSE}
+library(gridExtra)
+```
+
+
+```{r, echo=FALSE}
+grid.arrange(one, two, nrow = 1)
+grid.arrange(three, four, nrow = 1)
+grid.arrange(five, six, nrow = 1)
+grid.arrange(seven, eight, nrow = 1)
+grid.arrange(nine, ten, nrow = 1) 
+```
+<center> Figure 1: Pie Charts  </center>
+From the pie charts we can see that about 90% of the dogs are housebroken, about 65% get along with cats, almost all get along with females, about 90% get along with males, and almost all like children and people. We can also see that the majority of the dogs are medium sized, and most are short haired. From this array of pie charts we can better understand what types of dogs we are looking at. It can be inferred that medium short haired dogs are the most common and thus are the most common to be adopted. 
+
+
+
+```{r, echo=FALSE}
+colorchoice = c("salmon", "peachpuff", "darksalmon")
+
+ggplot(Data, aes(age)) +
+  geom_histogram(binwidth=2, aes(fill=size), color="white") +
+  xlab("Age") +
+  ylab("Density")+
+  scale_fill_manual(values=colorchoice)+ 
+  ggtitle("Distribution of Age by Dog Size") +
+  labs(caption = "Figure 2: Distrubution of Age by Dog Size") +
+  theme(plot.caption = element_text(hjust = 0.5))
+```
+This bar chart shows the relationship between the age of the dogs and their size. From the shape of the graph we can see that middle aged dogs are the most common to be posted for adoption This makes sense as puppies are usually favored so they are often not posted. Also, older dogs tend to already have homes so it is expected that fewer be posted. From the pie charts, we knew that medium dogs were the most common and here we can see that medium middle aged dogs are the most common to be adopted. Large dogs are most often adopted at a middle age or older age and small dogs are most common at a young and middle age. 
+
+```{r, echo=FALSE}
+colorchoice = c("salmon", "peachpuff", "darksalmon")
+
+ggplot(Data, aes(age)) +
+  geom_histogram(binwidth=2, aes(fill=neutered), color="white") +
+  xlab("Age") +
+  ylab("Density")+
+  scale_fill_manual(values=colorchoice, labels=c("Unknown", "No", "Yes")) +
+  ggtitle("Distribution of Age by Nuetered Status") +
+  labs(caption = "Figure 3: Distrubution of Age by Neutered Status") +
+  theme(plot.caption = element_text(hjust = 0.5))
+  
+```
+This bar chart shows the distribution of the ages of the dogs by whether or not the dog is neutered. As we can see there is an unknown option. When dogs are first found, it is likely unknown whether or not they are neutered. This is important because they will be less likely to be adopted with unknown neuter status. The graph shows that more dogs are neutered than not. Of the dogs that are not neutered, we can see most are middle aged. This makes sense as dogs get neutered when they are young so if they are found middle aged they may not be neutered yet. We can also see that most of the dogs who are neutered are middle aged. 
+
+```{r, echo=FALSE}
+library(ggmosaic)
+```
+
+```{r, echo=FALSE}
+ggplot(Data) +
+  geom_mosaic(aes(x=product(sex), fill = sex, 
+                  conds = product(neutered))) +
+  scale_fill_manual(values=c("salmon", "peachpuff")) +
+  ggtitle("Distribution of Neuter Status by Sex") +
+  labs(caption = "Figure 4: Distrubution of Neuter Status by Sex") +
+  theme(plot.caption = element_text(hjust = 0.5))
+```
+This mosaic plot shows the relationship between the sex of the dogs and whether or not they are neutered. It appears that there are more males not neutered than neutered while there are more females neutered than not neutered. This may be due to the fact that females are the ones to have children directly so people are more likely to get female dogs neutered than males. 
+
+
+```{r, echo=FALSE}
+ggplot(Data) +
+  geom_mosaic(aes(x = product(sex, neutered, housebroken), fill=sex)) + 
+  theme(axis.text.x = element_text(angle = 90)) +
+  scale_fill_manual(values=c("salmon", "peachpuff")) +
+  ggtitle("Neuter and Housebroken Status by Sex") +
+  labs(caption = "Figure 5: Neuter and Housebroken Status by Sex") +
+  theme(plot.caption = element_text(hjust = 0.5))
+```
+This mosaic plot shows the relationship between the dogs sex as well as whether they are housebroken and whether they are neutered. This plot shows that there more females that are housebroken and neutered and there are more males that are housebroken but not neutered. 
+
+```{r, echo=FALSE}
+ggplot(Data) +
+  geom_mosaic(aes(x = product(sex, get_along_females, get_along_males), fill=sex)) + 
+  theme(axis.text.x = element_text(angle = 90)) +
+  scale_fill_manual(values=c("salmon", "peachpuff")) +
+  ggtitle("Gender Preference by Sex") +
+  labs(caption = "Figure 6: Gender Preference by Sex") +
+  theme(plot.caption = element_text(hjust = 0.5))
+```
+This mosaic plot shows whether or not the dogs get along with males and females by their sex. This was an important relationship that I wanted to explore because many dogs have preferences of which gender they feel safe around and it could differ based on their sex. From this graph, we can see there are slightly more male dogs that get along with males than female dogs that get along with males. There is a lot more male dogs who do not get along with females that female dogs who do not get along with females. Based on this graph, it appears that the sex of the dog does have an association with whether they get along with males and females. 
+
+
+```{r, echo=FALSE}
+library(ggmosaic)
+
+ggplot(Data)+
+  geom_mosaic(aes(x = product(size, coat), fill = size))+
+  facet_grid(. ~sex)+
+  labs(x="Coat Length", y = "Size", title = "Size and Coat Length by Sex")+
+  theme(plot.title = element_text(hjust = 0.5)) +
+  scale_fill_manual(values=c("salmon", "peachpuff", "darksalmon")) +
+  labs(caption = "Figure 7: Size and Coat Length by Sex") +
+  theme(plot.caption = element_text(hjust = 0.5))
+```
+This final mosaic plot shows the relationship between sex, size, and coat length. The purpose of this graph was to see how male and female dogs differ in their physical features to see if those contribute to the proportion of males and females that are adopted. From this graph we can see that male and female dogs are very similar in their size and coat length. One of the only major differences is there are more large male dogs than there are large female dogs, which is to be expected. Based on this graph, it is appropriate to say that size and coat length probably do not determine whether a person adopts a female versus a male. The other characteristics are likely more influential in the decision. (This was the graph added after peer review.)
+
+
+
+

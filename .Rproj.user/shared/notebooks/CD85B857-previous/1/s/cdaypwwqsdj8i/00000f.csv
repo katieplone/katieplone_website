@@ -1,0 +1,6 @@
+"0","library(Lock5Data)"
+"0","data(StudentSurvey)"
+"0","StudentSurvey = StudentSurvey[complete.cases(StudentSurvey), ]"
+"0","StudentSurvey$Year = factor(StudentSurvey$Year, "
+"0","                          levels = c(""FirstYear"", ""Sophomore"", ""Junior"", ""Senior""),"
+"0","                          ordered = TRUE)"

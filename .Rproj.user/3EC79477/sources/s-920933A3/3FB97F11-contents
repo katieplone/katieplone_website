@@ -1,0 +1,27 @@
+name: "katieplone_website"
+title: "Katie Plone"
+theme: "my_theme.css"
+
+description: |
+  My Website
+output_dir: "docs"
+navbar:
+  right:
+    - text: "Home"
+      href: index.html 
+    - text: "Shelter Dogs Dataset"
+      menu:
+      - text: "About the Data"
+        href: about.html
+      - text: Visualizations
+        href: dataVis.html
+    - text: "Visualizations"
+      menu:
+      - text: "Generative Art"
+        href: generative.html
+      - text: "Previous Work"
+        href: previous.html
+      - text: "Shiny Creations"
+        href: static.html
+    
+output: distill::distill_article

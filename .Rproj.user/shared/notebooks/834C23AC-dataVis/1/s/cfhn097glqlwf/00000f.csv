@@ -1,0 +1,8 @@
+"0","ggplot(Data) +"
+"0","  geom_mosaic(aes(x = product(sex, get_along_females, get_along_males), fill=sex)) + "
+"0","  theme(axis.text.x = element_text(angle = 90)) +"
+"0","  scale_fill_manual(values=c(""orange"", ""lightblue"")) +"
+"0","  ggtitle(""Gender Preference by Sex"")"
+"2","Error in geom_mosaic(aes(x = product(sex, get_along_females, get_along_males),  : 
+  could not find function ""geom_mosaic""
+"

@@ -1,0 +1,22 @@
+---
+title: "Final Project"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+```{r, echo=FALSE}
+library(ggplot2)
+
+```
+
+
+```{r}
+Data = read.csv("~/Downloads/ShelterDogs.csv", header=TRUE, sep=",")
+```
+
+
+
+

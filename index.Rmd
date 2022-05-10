@@ -1,0 +1,14 @@
+---
+title: "About Me"
+description: "Welcome to my website! My name is Katie Plone, I am a Statistics Major and Computer Science Minor at Bucknell University. I am a sophomore, and I am from Framingham, MA. On this website you will find some of my data visualizations created in MATH 230, as well as some new graphs created for a dataset about adoptable dogs. Enjoy!" 
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+
+# Learn more about creating websites with Distill at:
+# https://rstudio.github.io/distill/website.html
+
+```
+
+

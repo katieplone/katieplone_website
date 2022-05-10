@@ -1,0 +1,20 @@
+---
+title: "Shelter Dogs Dataset"
+
+---
+ 
+
+**Quantitative Variables:**
+
+ID, Age, Date Found, Date Adoptable, Date Posted
+
+
+**Categorical Variables:**
+
+Name, Sex, Breed, Color, Size, Coat Length, Neutered, Housebroken, Likes People, Likes Children, Gets along with Males, Gets along with Females, Gets along with Cats, Environment to Keep in
+
+**Chosen Variables**
+
+When I chose this data set, my goal in mind was to analyze the relationship between the various characteristics that are considered when a dog is listed for adoption. I decided to focus on the categorical variables in the data set because the dates included are not extremely relevant to the adaptability of a dog. The variables I chose to analyze are sex, size, coat length, neutered, housebrojen, likes people, likes children, gets along with males, gets along with females, and gets along with cats.
+
+By creating visualizations which examine the relationship between these categorical variables, I hoped to be able to make inferences about which characteristics are favorable to adopters and which coincide with other variables.

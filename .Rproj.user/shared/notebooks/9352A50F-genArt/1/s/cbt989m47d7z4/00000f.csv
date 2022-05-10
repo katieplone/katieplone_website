@@ -1,0 +1,4 @@
+"0","set.seed(1)"
+"0","artwork3 <- canvas_mosaic(colors = c(""dodgerblue"", ""cornflowerblue"", ""paleturquoise"", "
+"0","          ""royalblue1"", ""lightblue2"", ""midnightblue"", ""orange"", ""darkorange""), resolution = 500)"
+"0","saveCanvas(artwork3, filename = ""myArtwork3.png"")"

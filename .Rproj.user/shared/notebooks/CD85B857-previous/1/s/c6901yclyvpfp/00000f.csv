@@ -1,0 +1,6 @@
+"0","ggplot(StudentSurvey, aes(x = Height, y = ..density.., color = Year, fill = Year)) +"
+"0","  geom_density(alpha = .2) + "
+"0","  scale_color_brewer(palette = ""Dark2"") + "
+"0","  scale_fill_brewer(palette = ""Dark2"") +"
+"0","  labs(title =""Density Plot for Height by Class Year"", caption = ""Figure 1: Density Plot for Height by Class Year"") +"
+"0","  theme(plot.caption = element_text (hjust = 0.5))"

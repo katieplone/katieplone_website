@@ -1,0 +1,35 @@
+---
+title: "Generative Art"
+description: |
+  Here are my Generative Art Pieces I created using the aRtsy package in Rstudio. 
+---
+
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+Figure 1: Neon Lights (Generative Art Piece #1)
+![](myArtwork1.png)
+
+
+
+
+
+
+Figure 2: Lava Sky (Generative Art Piece #2)
+![](myArtwork2.png)
+
+
+
+
+
+Figure 3: Bucknell Mosaic (Generative Art Piece #3)
+![](myArtwork3.png)
+
+
+
+
+
+
+

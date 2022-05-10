@@ -1,0 +1,78 @@
+---
+title: "Previous Work"
+description: |
+  My Previous Visualizations created in MATH 230
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+ 
+
+```{r, echo=FALSE}
+library(ggplot2)
+library(hexbin)
+library(ggmosaic)
+```
+
+
+```{r, echo=FALSE}
+library(Lock5Data)
+data(StudentSurvey)
+StudentSurvey = StudentSurvey[complete.cases(StudentSurvey), ]
+StudentSurvey$Year = factor(StudentSurvey$Year, 
+                          levels = c("FirstYear", "Sophomore", "Junior", "Senior"),
+                          ordered = TRUE)
+```
+
+```{r, echo=FALSE}
+ggplot(StudentSurvey, aes(x = Height, y = ..density.., color = Year, fill = Year)) +
+  geom_density(alpha = .2) + 
+  scale_color_brewer(palette = "Dark2") + 
+  scale_fill_brewer(palette = "Dark2") +
+  labs(title ="Density Plot for Height by Class Year", caption = "Figure 1: Density Plot for Height by Class Year") +
+  theme(plot.caption = element_text (hjust = 0.5))
+```
+*Figure 1.* This visualization was a part of my ggplot extension project and uses data from the StudentSurvey data set, which is a part of the Lock5data package. The Student Survey Data set has 17 variables and 362 observations which includes the survey results from students taking an introductory statistics course over several years. The graph that I included on this page is a density plot of Height by class year. The graph shows the distribution of the Height of the student (in inches) by the class year of the student. We can see that the maximum density of students are around 71 inches tall and in the senior class. Similarly, the smallest density of students appears to be from the junior class above 80 inches tall. While first years, sophomores, and juniors have a similar trend in the density of heights, the senior class differs the most.
+
+
+
+
+```{r, echo=FALSE}
+library(MASS)
+data(survey)
+survey.sub = survey[complete.cases(survey), ]
+
+ggplot(survey.sub, aes(x=Smoke, y=Height, fill=Smoke)) +
+  geom_violin(scale ="width", alpha=0.5) +
+  scale_fill_discrete(name = "Smoking Frequency") +
+  theme(legend.title.align = 0.5) +
+  geom_boxplot(width=0.25) + 
+  labs(title ="Violin Plot for Height by Smoking Frequency", caption = "Figure 2: Violin Plot for Height by Smoking Frequency") +
+  theme(plot.caption = element_text (hjust = 0.5))
+```
+*Figure 2.* This Violin Plot was also a part of my ggplot extensions project. This violin plot shows a relationship between the variables height and smoking frequency from the Student Survey Data Set. This data set includes 237 responses from University students in a Statistics I course. Height is a quantitative variable, while Smoke is a categorical variable with four levels, heavy, never, occasionally, and regularly. From this visualizion, we can see that the heights of the students who never smoke has the widest range, while the heights of the students who occasionally or heavily smoke has the smallest range. The median height of the students who answered heavy, never, or occasionally were all around 170 inches, while the median height of the students who answered regularly was around 180 inches. From this graph, we can see that there is an association between smoking frequency and height.  
+
+
+
+```{r, echo=FALSE}
+library(ggplot2)
+library(Lock5Data)
+data(CollegeScores)
+CollegeScores = CollegeScores[complete.cases(CollegeScores), ]
+# Removing a region with only one university.
+CollegeScores = CollegeScores[-1158, ]
+
+
+ggplot(CollegeScores, aes(x = Cost, y = CompRate, size = Enrollment)) +
+  geom_point(shape = 21, colour = "black", fill = "papayawhip", alpha=0.4) +
+  labs(x = "Average Total Cost for Tuition, Room, Board, etc.", y="Completion Rate",
+  size="Undergrad Enrollment") + 
+  ggtitle("Balloon Plot for Tuition, Completion Rate, and Undergrad Enrollment") +
+  labs(caption = "Figure 3: Ballon Plot") +
+  theme(plot.caption = element_text(hjust = 0.5))
+```
+*Figure 3.* This data visualization uses data from the CollegeScores data set which includes a variety of variables which are collected from all US post-secondary schools to be included on the College Scorecard. This Balloon Plot shows the relationship between the average total cost for tuition, room, board, etc., completion rate, and undergrad enrollment. There appears to be a slight positive relationship between average cost and completion rate, which shows that as the average cost of a college increases, the completion rate also increases, on average. The size of the circles correlates to the number of undergraduates enrolled. We can see that the schools with the lowest average cost and highest graduation rate have the most students, and as average cost increases, and completion rate decreases, the undergraduate enrollment decreases, on average. This is realistic because the more expensive a school, than the fewer students will attend, and the lower the completion rate, than similarly, the fewer undergrads.  
+
+
+
